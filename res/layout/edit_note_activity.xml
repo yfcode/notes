@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical" >
+
+    <TextView
+        android:id="@+id/edit_note_title_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/note_title" />
+
+    <EditText
+        android:id="@+id/edit_note_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_note_title_label"
+        android:ems="10"
+        android:inputType="text" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/edit_note_body_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_note_title"
+        android:text="@string/note_body" />
+
+    <EditText
+        android:id="@+id/edit_note_body"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_note_body_label"
+        android:ems="10"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:singleLine="false" >
+
+        <requestFocus />
+
+    </EditText>
+
+    <Button
+        android:id="@+id/edit_note_done"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_note_body"
+        android:onClick="onDone"
+        android:text="@string/done" />
+
+</RelativeLayout>

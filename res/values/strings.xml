@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Notes</string>
+    <string name="action_settings">Settings</string>
+    <string name="note_title">Note title:</string>
+    <string name="note_body">Note body:</string>
+    <string name="add_note">Add note</string>
+    <string name="delete_note">Delete note</string>
+    <string name="edit_note">Edit note</string>
+    <string name="done">Done</string>
+    <string name="item_image">Item image</string>
+    <string name="item_title">Item title</string>
+    <string name="item_chechbox">Item check box</string>
+    <string name="add_folder">Add folder</string>
+    <string name="rename_folder">Rename folder</string>
+    <string name="delete_folder">Delete folder</string>
+
+</resources>
