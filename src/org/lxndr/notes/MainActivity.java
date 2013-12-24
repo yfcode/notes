@@ -3,14 +3,13 @@ package org.lxndr.notes;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+
 
 public class MainActivity extends Activity {
 	
@@ -67,24 +66,18 @@ public class MainActivity extends Activity {
     
     
     private void addFolder() {
-    	AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-    	dialog.setTitle("Alert Dialog With EditText");
-    	dialog.setMessage("Enter Your Name Here");
     	final EditText input = new EditText(this);
-    	dialog.setView(input);
-    	final Context context = this;
-        
-    	dialog.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-             //You will get as string input data in this variable.
-             // here we convert the input to a string and show in a toast.
-             String srt = input.getEditableText().toString();
-             Toast.makeText(context, srt, Toast.LENGTH_LONG).show();
-            }
-        });
-    	
-    	AlertDialog alertDialog = dialog.create();
-        alertDialog.show();
+    	AlertDialog dialog = new AlertDialog.Builder(this)
+    		.setTitle("New folder")
+    		.setView(input)
+        	.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+        		public void onClick(DialogInterface dialog, int whichButton) {
+        			String name = input.getEditableText().toString();
+        			long new_folder = m_Storage.addFolder(m_CurrentFolder, name);
+        			showFolder(new_folder);
+        		}
+        	}).create();
+    	dialog.show();
     }
     
     
