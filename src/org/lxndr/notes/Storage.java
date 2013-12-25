@@ -9,9 +9,28 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
 public class Storage extends SQLiteOpenHelper {
 	
 	static final int VERSION = 1;
+	
+	enum ItemType {
+		TEXT,
+		LIST,
+		ALARM
+	}
+	
+	enum TextColor {
+		NONE,
+		RED,
+		ORANGE,
+		YELLOW,
+		GREEN,
+		LIGHT_BLUE,
+		BLUE,
+		VIOLET
+	}
+	
 	
 	private SQLiteDatabase m_DB;
 	
@@ -23,8 +42,46 @@ public class Storage extends SQLiteOpenHelper {
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, folder INTEGER, title TEXT, body TEXT)");
-		db.execSQL("CREATE TABLE structure (id INTEGER PRIMARY KEY AUTOINCREMENT, parent INTEGER, name TEXT)");
+		/* folder tree */
+		db.execSQL("CREATE TABLE folders ("
+				+ "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "parent INTEGER,"
+				+ "name TEXT)");
+		/* notes */
+		db.execSQL("CREATE TABLE notes ("
+				+ "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "folder INTEGER,"
+				+ "title TEXT,"
+				+ "created INTEGER,"
+				+ "changed INTEGER,"
+				+ "position INTEGER)");
+		/* note structure */
+		db.execSQL("CREATE TABLE structure ("
+				+ "note INTEGER,"
+				+ "item INTEGER,"
+				+ "position INTEGER,"
+				+ "title TEXT)");
+		/* text items */
+		db.execSQL("CREATE TABLE type_text ("
+				+ "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "text TEXT,"
+				+ "color INTEGER)");
+		/* check list items */
+		db.execSQL("CREATE TABLE type_list ("
+				+ "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "text TEXT)");
+		/* alarm items */
+		db.execSQL("CREATE TABLE type_alarm ("
+				+ "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "text TEXT,"
+				+ "time INTEGER)");
+		
+		/*
+		 * SELECT * FROM folders WHERE parent=?
+		 * 
+		 * 
+		 * SELECT * FROM type_list WHERE 
+		 */
 	}
 	
 	
@@ -131,5 +188,10 @@ public class Storage extends SQLiteOpenHelper {
 		q.close();
 		return list;
 	}
-
+	
+	
+	class What {
+	}
+	
+	public List<What> nah;
 }
