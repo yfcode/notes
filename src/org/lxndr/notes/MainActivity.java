@@ -26,6 +26,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         
+        this.startService(null);
+        
         m_Storage = new Storage(this);
         m_Storage.init();
         

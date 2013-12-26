@@ -13,26 +13,28 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="org.lxndr.notes.MainActivity"
+        <service android:name=".MainService">
+        </service><activity
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.lxndr.notes.NoteActivity">
+        <activity android:name=".NoteActivity">
             <intent-filter>
                 <action android:name="org.lxndr.notes.NoteActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name="org.lxndr.notes.EditNoteActivity">
+        <activity android:name=".EditNoteActivity">
             <intent-filter>
                 <action android:name="org.lxndr.notes.EditNoteActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        
     </application>
 
 </manifest>

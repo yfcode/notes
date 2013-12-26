@@ -193,5 +193,9 @@ public class Storage extends SQLiteOpenHelper {
 	class What {
 	}
 	
-	public List<What> nah;
+	
+	public List<What> getNote() {
+		List<What> list = new ArrayList<What>();
+		return list;
+	}
 }
